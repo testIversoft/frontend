@@ -1,0 +1,37 @@
+<div class="container-fluid">
+  <div class="row justify-content-center">
+    <h4 class="col-md-12 text-center">User Details</h4>
+    <div class="btn-group btn-group-sm" role="group" aria-label="First group">
+      <a routerLink="/userlist" class="btn btn-secondary">List Users</a>
+      <a routerLink="/adduser" class="btn btn-secondary">Add User</a>
+    </div>
+  </div>
+  <br>
+  <table class="table table-striped small table-bordered">
+    <thead>
+    <tr>
+      <th>Id</th>
+      <th>User Name</th>
+      <th>User E-mail</th>
+      <th>User Role</th>
+      <th>Created</th>
+      <th>Updated</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let user of users">
+      <td>{{user.id}}</td>
+      <td>{{user.userName}}</td>
+      <td>{{user.userEmail}}</td>
+      <td>{{user | UserRole: userRoles}}</td>
+      <td>{{user.userCreatedDate}}</td>
+      <td>{{user.userUpdatedDate}}</td>
+      <td>
+        <button class="btn btn-sm btn-warning" (click)="changeUser(user)">Edit</button>
+        <button class="btn btn-sm btn-danger" (click)="deleteUser(user)">X</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
